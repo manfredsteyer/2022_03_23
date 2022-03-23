@@ -7,8 +7,8 @@
 <form #f="ngForm">
   <div class="form-group">
     <label>From:</label>
-    <input [(ngModel)]="from" [ngModelOptions]="{ updateOn: 'change'}" appCity class="form-control" minlength="3" name="from"
-           required>
+    <input [(ngModel)]="from" [ngModelOptions]="{ updateOn: 'change'}" appCity class="form-control" minlength="3"
+      name="from" required>
   </div>
 
   <div *ngIf="!f?.controls?.from?.valid" class="error">
@@ -31,11 +31,11 @@
 
   <div class="form-group">
     <label>To:</label>
-    <input [(ngModel)]="to" class="form-control">
+    <input name="to" [(ngModel)]="to" class="form-control">
   </div>
 
   <div class="form-group">
-    <input [(ngModel)]="delayFilter" id="delayFilter" type="checkbox">
+    <input name="delayed" [(ngModel)]="delayFilter" id="delayFilter" type="checkbox">
     &nbsp;
     <label for="delayFilter">Delayed</label>
   </div>

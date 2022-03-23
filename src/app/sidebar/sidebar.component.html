@@ -20,14 +20,14 @@
     </li>
 
     <li routerLinkActive="active">
-      <a routerLink="flight-search">
+      <a routerLink="flight-booking/flight-search">
         <p>Flights</p>
       </a>
     </li>
 
     <li routerLinkActive="active">
-      <a routerLink="passenger-search">
-        <p>Passengers</p>
+      <a [routerLink]="[{outlets: { 'aux': 'basket' }}]">
+        <p>Basket</p>
       </a>
     </li>
 
@@ -39,4 +39,3 @@
 
   </ul>
 </div>
-

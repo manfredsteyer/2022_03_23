@@ -1,6 +1,6 @@
 // src/app/shared/shared.module.ts
 
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DateComponent } from './date/date.component';
 import { CityPipe } from './city.pipe';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 // Von der CLI eingefügt
 import { CityValidationDirective } from './validation/city-validation.directive';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -21,6 +22,9 @@ import { CityValidationDirective } from './validation/city-validation.directive'
 
     // Von der CLI eingefügt
     CityValidationDirective
+  ],
+  providers: [
+    // AuthService
   ],
   exports: [
     DateComponent,
@@ -34,4 +38,21 @@ import { CityValidationDirective } from './validation/city-validation.directive'
     CityValidationDirective
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+
+  static forRoot(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: []
+    };
+  }
+
+  static forChild(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: []
+    };
+  }
+
+
+}

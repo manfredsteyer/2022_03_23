@@ -4,15 +4,16 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight';
+import { FlightBookingApiModule } from './flight-booking.api.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: FlightBookingApiModule
 })
 export class FlightService {
   // We will refactor this to an observable in a later exercise!
   flights: Flight[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   load(from: string, to: string): void {
     this.find(from, to).subscribe({
@@ -23,6 +24,16 @@ export class FlightService {
         console.error('error', err);
       }
     });
+  }
+
+  findById(id: string): Observable<Flight> {
+    const url = 'http://www.angular.at/api/flight';
+
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+
+    const params = new HttpParams().set('id', id);
+
+    return this.http.get<Flight>(url, { headers, params });
   }
 
   find(from: string, to: string): Observable<Flight[]> {
